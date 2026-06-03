@@ -53,10 +53,3 @@ Losuje: forma + inspiracja + technika + kolorystyka
 
 **Tryb 2 — „Wyjdź ze schematu"**  
 Losuje: forma + 2 inspiracje z różnych kategorii + technika + kolorystyka + ograniczenie
-
-## Deploy na GitHub Pages
-
-1. Utwórz nowe repo na GitHub (np. `ceramik-generator`)
-2. Wgraj wszystkie pliki
-3. Settings → Pages → Source: `main` / `root`
-4. Gotowe — strona działa pod `https://bezsensuhania.github.io/ceramik-generator/`
