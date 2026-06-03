@@ -1,0 +1,310 @@
+// ============================================================
+//  CERAMIK GENERATOR — BAZA SŁÓW KLUCZOWYCH
+//  Edytuj ten plik żeby dodawać/usuwać/zmieniać hasła.
+//  Każda kategoria to tablica obiektów { v: "hasło", s: "kategoria" }
+//  lub po prostu tablica stringów (kolor, technika, ograniczenia).
+// ============================================================
+
+const DB = {
+
+  // ----------------------------------------------------------
+  //  FORMA — użytkowe
+  // ----------------------------------------------------------
+  forma_uzytkowe: [
+    { v: "kubek",                   s: "użytkowe" },
+    { v: "filiżanka",               s: "użytkowe" },
+    { v: "espresso cup",            s: "użytkowe" },
+    { v: "miska",                   s: "użytkowe" },
+    { v: "miseczka",                s: "użytkowe" },
+    { v: "talerz",                  s: "użytkowe" },
+    { v: "patera",                  s: "użytkowe" },
+    { v: "tacka",                   s: "użytkowe" },
+    { v: "półmisek",                s: "użytkowe" },
+    { v: "dzbanek",                 s: "użytkowe" },
+    { v: "karafka",                 s: "użytkowe" },
+    { v: "czajnik",                 s: "użytkowe" },
+    { v: "cukiernica",              s: "użytkowe" },
+    { v: "pojemnik z pokrywką",     s: "użytkowe" },
+    { v: "doniczka",                s: "użytkowe" },
+    { v: "osłonka",                 s: "użytkowe" },
+    { v: "świecznik",               s: "użytkowe" },
+    { v: "kadzielniczka",           s: "użytkowe" },
+    { v: "podstawka pod łyżkę",    s: "użytkowe" },
+    { v: "podstawka pod biżuterię", s: "użytkowe" },
+    { v: "pojemnik na pędzle",      s: "użytkowe" },
+    { v: "pojemnik na kredki",      s: "użytkowe" },
+    { v: "mydelniczka",             s: "użytkowe" },
+    { v: "karmnik dla ptaków",      s: "użytkowe" },
+  ],
+
+  // ----------------------------------------------------------
+  //  FORMA — ozdobne
+  // ----------------------------------------------------------
+  forma_ozdobne: [
+    { v: "figurka",                         s: "ozdobne" },
+    { v: "popiersie",                       s: "ozdobne" },
+    { v: "maska",                           s: "ozdobne" },
+    { v: "płaskorzeźba",                    s: "ozdobne" },
+    { v: "kafel dekoracyjny",               s: "ozdobne" },
+    { v: "talerz ścienny",                  s: "ozdobne" },
+    { v: "zawieszka",                       s: "ozdobne" },
+    { v: "dzwonek wietrzny",                s: "ozdobne" },
+    { v: "totem",                           s: "ozdobne" },
+    { v: "obiekt abstrakcyjny",             s: "ozdobne" },
+    { v: "mini rzeźba",                     s: "ozdobne" },
+    { v: "kamień ceremonialny",             s: "ozdobne" },
+    { v: "amulet",                          s: "ozdobne" },
+    { v: "artefakt",                        s: "ozdobne" },
+    { v: "mini ołtarzyk",                   s: "ozdobne" },
+    { v: "domek",                           s: "ozdobne" },
+    { v: "grzyb dekoracyjny",               s: "ozdobne" },
+    { v: "dekoracyjna muszla",              s: "ozdobne" },
+    { v: "dekoracyjny owad",                s: "ozdobne" },
+    { v: "dekoracyjna głowa zwierzęcia",    s: "ozdobne" },
+  ],
+
+  // ----------------------------------------------------------
+  //  INSPIRACJE — natura
+  // ----------------------------------------------------------
+  natura: [
+    { v: "mech",        s: "natura" },
+    { v: "las",         s: "natura" },
+    { v: "puszcza",     s: "natura" },
+    { v: "liście",      s: "natura" },
+    { v: "korzenie",    s: "natura" },
+    { v: "paprocie",    s: "natura" },
+    { v: "grzyby",      s: "natura" },
+    { v: "porosty",     s: "natura" },
+    { v: "kora",        s: "natura" },
+    { v: "gałęzie",     s: "natura" },
+    { v: "jezioro",     s: "natura" },
+    { v: "morze",       s: "natura" },
+    { v: "ocean",       s: "natura" },
+    { v: "fale",        s: "natura" },
+    { v: "korale",      s: "natura" },
+    { v: "muszle",      s: "natura" },
+    { v: "glony",       s: "natura" },
+    { v: "meduzy",      s: "natura" },
+    { v: "rafy",        s: "natura" },
+    { v: "skały",       s: "natura" },
+    { v: "góry",        s: "natura" },
+    { v: "jaskinie",    s: "natura" },
+    { v: "lawa",        s: "natura" },
+    { v: "wulkan",      s: "natura" },
+    { v: "pustynia",    s: "natura" },
+    { v: "wydmy",       s: "natura" },
+    { v: "śnieg",       s: "natura" },
+    { v: "lód",         s: "natura" },
+    { v: "mróz",        s: "natura" },
+    { v: "chmury",      s: "natura" },
+    { v: "mgła",        s: "natura" },
+    { v: "burza",       s: "natura" },
+    { v: "błyskawice",  s: "natura" },
+    { v: "księżyc",     s: "natura" },
+    { v: "gwiazdy",     s: "natura" },
+    { v: "planety",     s: "natura" },
+  ],
+
+  // ----------------------------------------------------------
+  //  INSPIRACJE — zwierzęta
+  // ----------------------------------------------------------
+  zwierzeta: [
+    { v: "kot",             s: "zwierzęta" },
+    { v: "lis",             s: "zwierzęta" },
+    { v: "wilk",            s: "zwierzęta" },
+    { v: "sowa",            s: "zwierzęta" },
+    { v: "kruk",            s: "zwierzęta" },
+    { v: "wrona",           s: "zwierzęta" },
+    { v: "ćma",             s: "zwierzęta" },
+    { v: "motyl",           s: "zwierzęta" },
+    { v: "chrząszcz",       s: "zwierzęta" },
+    { v: "ważka",           s: "zwierzęta" },
+    { v: "pszczoła",        s: "zwierzęta" },
+    { v: "jeż",             s: "zwierzęta" },
+    { v: "królik",          s: "zwierzęta" },
+    { v: "żaba",            s: "zwierzęta" },
+    { v: "salamandra",      s: "zwierzęta" },
+    { v: "ośmiornica",      s: "zwierzęta" },
+    { v: "wieloryb",        s: "zwierzęta" },
+    { v: "meduza",          s: "zwierzęta" },
+    { v: "ryba głębinowa",  s: "zwierzęta" },
+    { v: "smok",            s: "zwierzęta" },
+  ],
+
+  // ----------------------------------------------------------
+  //  INSPIRACJE — emocje
+  // ----------------------------------------------------------
+  emocje: [
+    { v: "spokój",          s: "emocje" },
+    { v: "melancholia",     s: "emocje" },
+    { v: "nostalgia",       s: "emocje" },
+    { v: "radość",          s: "emocje" },
+    { v: "ekscytacja",      s: "emocje" },
+    { v: "ciekawość",       s: "emocje" },
+    { v: "niepokój",        s: "emocje" },
+    { v: "samotność",       s: "emocje" },
+    { v: "tęsknota",        s: "emocje" },
+    { v: "zachwyt",         s: "emocje" },
+    { v: "chaos",           s: "emocje" },
+    { v: "gniew",           s: "emocje" },
+    { v: "duma",            s: "emocje" },
+    { v: "tajemnica",       s: "emocje" },
+    { v: "nadzieja",        s: "emocje" },
+    { v: "zmęczenie",       s: "emocje" },
+    { v: "ulga",            s: "emocje" },
+    { v: "bezpieczeństwo",  s: "emocje" },
+    { v: "wolność",         s: "emocje" },
+  ],
+
+  // ----------------------------------------------------------
+  //  INSPIRACJE — pojęcia
+  // ----------------------------------------------------------
+  pojecia: [
+    { v: "czas",            s: "pojęcia" },
+    { v: "pamięć",          s: "pojęcia" },
+    { v: "sen",             s: "pojęcia" },
+    { v: "cisza",           s: "pojęcia" },
+    { v: "ruch",            s: "pojęcia" },
+    { v: "granica",         s: "pojęcia" },
+    { v: "przypadek",       s: "pojęcia" },
+    { v: "powtarzalność",   s: "pojęcia" },
+    { v: "transformacja",   s: "pojęcia" },
+    { v: "wzrost",          s: "pojęcia" },
+    { v: "rozpad",          s: "pojęcia" },
+    { v: "przemijanie",     s: "pojęcia" },
+    { v: "odrodzenie",      s: "pojęcia" },
+    { v: "równowaga",       s: "pojęcia" },
+    { v: "chaos",           s: "pojęcia" },
+    { v: "porządek",        s: "pojęcia" },
+    { v: "ciężar",          s: "pojęcia" },
+    { v: "lekkość",         s: "pojęcia" },
+    { v: "echo",            s: "pojęcia" },
+    { v: "ślad",            s: "pojęcia" },
+  ],
+
+  // ----------------------------------------------------------
+  //  INSPIRACJE — style / estetyki
+  // ----------------------------------------------------------
+  style: [
+    { v: "chińska porcelana",   s: "styl" },
+    { v: "wabi-sabi",           s: "styl" },
+    { v: "mingei",              s: "styl" },
+    { v: "buncheong",           s: "styl" },
+    { v: "celadon",             s: "styl" },
+    { v: "folk słowiański",     s: "styl" },
+    { v: "folk skandynawski",   s: "styl" },
+    { v: "art nouveau",         s: "styl" },
+    { v: "art deco",            s: "styl" },
+    { v: "bauhaus",             s: "styl" },
+    { v: "brutalizm",           s: "styl" },
+    { v: "memphis design",      s: "styl" },
+    { v: "mid-century modern",  s: "styl" },
+    { v: "gothic",              s: "styl" },
+    { v: "victorian",           s: "styl" },
+    { v: "cottagecore",         s: "styl" },
+    { v: "dark academia",       s: "styl" },
+    { v: "fairycore",           s: "styl" },
+    { v: "goblincore",          s: "styl" },
+    { v: "cyberpunk",           s: "styl" },
+    { v: "solarpunk",           s: "styl" },
+    { v: "dieselpunk",          s: "styl" },
+    { v: "retrofuturyzm",       s: "styl" },
+    { v: "science fiction",     s: "styl" },
+    { v: "postapo",             s: "styl" },
+    { v: "dziecięcy rysunek",   s: "styl" },
+    { v: "graffiti",            s: "styl" },
+    { v: "pixel art",           s: "styl" },
+    { v: "komiksy lat 90",      s: "styl" },
+  ],
+
+  // ----------------------------------------------------------
+  //  KOLORYSTYKA
+  //  (zwykłe stringi, bez kategorii)
+  // ----------------------------------------------------------
+  kolor: [
+    "monochromatyczna",
+    "czarno-biała",
+    "ziemista",
+    "piaskowa",
+    "leśna",
+    "morska",
+    "pastelowa",
+    "neonowa",
+    "kontrastowa",
+    "przygaszona",
+    "mglista",
+    "nocna",
+    "jesienna",
+    "zimowa",
+    "wiosenna",
+    "letnia",
+    "naturalna glina",
+    "biel i kobalt",
+    "biały + jeden kolor",
+  ],
+
+  // ----------------------------------------------------------
+  //  TECHNIKI ZDOBIENIA
+  // ----------------------------------------------------------
+  technika: [
+    "transparentne szkliwo",
+    "szkliwo jednokolorowe",
+    "dwa szkliwa",
+    "warstwowanie szkliw",
+    "dripping",
+    "pouring",
+    "bubble glazing",
+    "nerikomi",
+    "neriage",
+    "sgraffito",
+    "mishima",
+    "carving",
+    "underglaze painting",
+    "angoba malowana",
+    "angoba natryskiwana",
+    "stemplowanie",
+    "odciski roślin",
+    "odciski koronek",
+    "odciski tkanin",
+    "wax resist",
+    "szczotkowanie angobą",
+    "sucha tekstura",
+    "burnishing",
+    "terra sigillata",
+    "złoto lustre",
+    "platyna lustre",
+    "bez zdobień",
+  ],
+
+  // ----------------------------------------------------------
+  //  OGRANICZENIA (tryb 2)
+  // ----------------------------------------------------------
+  ograniczenia: [
+    "tylko jeden kolor",
+    "bez szkliwa",
+    "tylko tekstura",
+    "bez dekoracji",
+    "tylko linie",
+    "tylko kropki",
+    "bez prostych linii",
+    "bez okręgów",
+    "tylko odciski",
+    "maksymalnie 10 cm",
+    "musi mieć otwór",
+    "musi mieć pokrywkę",
+    "musi się kołysać",
+    "musi stać na trzech punktach",
+    "musi wyglądać jak artefakt",
+    "musi wyglądać jak znalezisko archeologiczne",
+    "musi wyglądać na 1000 lat stare",
+    "musi wyglądać jak obiekt z przyszłości",
+    "musi wyglądać jak organizm",
+    "musi wyglądać jak maszyna",
+    "połącz dwa niepasujące motywy",
+    "użyj tylko resztek gliny",
+    "wykorzystaj przypadkowe ślady narzędzi",
+    "zrób coś czego nigdy wcześniej nie robiłaś",
+    "zainspiruj się pierwszą rzeczą którą zobaczysz za oknem",
+  ],
+
+};

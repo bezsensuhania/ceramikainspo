@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dzisiaj zrób — generator ceramiczny</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+    <header class="header">
+      <h1>dzisiaj zrób</h1>
+      <p class="subtitle">generator ceramiczny</p>
+    </header>
+
+    <div class="mode-switcher">
+      <button class="mode-btn active" id="btn-mode1" onclick="setMode(1)">
+        <span class="mode-num">tryb 1</span>
+        nie mam pomysłu
+      </button>
+      <button class="mode-btn" id="btn-mode2" onclick="setMode(2)">
+        <span class="mode-num">tryb 2</span>
+        wyjdź ze schematu
+      </button>
+    </div>
+
+    <div id="empty" class="empty-state">
+      <div class="empty-icon">🏺</div>
+      <div class="empty-text">naciśnij żeby wylosować projekt</div>
+    </div>
+
+    <div id="results" class="results hidden">
+
+      <div class="result-card" id="card-forma">
+        <div class="result-label">forma</div>
+        <div class="result-value" id="val-forma"></div>
+        <div class="result-sub" id="sub-forma"></div>
+      </div>
+
+      <!-- tryb 1: jedna inspiracja -->
+      <div class="result-card" id="card-inspiracja">
+        <div class="result-label">inspiracja</div>
+        <div class="result-value" id="val-inspiracja"></div>
+        <div class="result-sub" id="sub-inspiracja"></div>
+      </div>
+
+      <!-- tryb 2: dwie inspiracje -->
+      <div class="chips-grid hidden" id="chips-inspiracje">
+        <div class="chip">
+          <div class="result-label">inspiracja 1</div>
+          <div class="result-value" id="val-insp1"></div>
+          <div class="result-sub" id="sub-insp1"></div>
+        </div>
+        <div class="chip">
+          <div class="result-label">inspiracja 2</div>
+          <div class="result-value" id="val-insp2"></div>
+          <div class="result-sub" id="sub-insp2"></div>
+        </div>
+      </div>
+
+      <div class="chips-grid">
+        <div class="chip">
+          <div class="result-label">technika</div>
+          <div class="result-value small" id="val-technika"></div>
+        </div>
+        <div class="chip">
+          <div class="result-label">kolorystyka</div>
+          <div class="result-value small" id="val-kolor"></div>
+        </div>
+      </div>
+
+      <!-- tryb 2: ograniczenie -->
+      <div class="constraint-card hidden" id="card-ogr">
+        <div class="constraint-label">⚡ ograniczenie</div>
+        <div class="constraint-value" id="val-ogr"></div>
+      </div>
+
+    </div>
+
+    <button class="roll-btn" onclick="roll()">losuj →</button>
+  </div>
+
+  <!-- baza słów kluczowych — edytuj data.js -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
